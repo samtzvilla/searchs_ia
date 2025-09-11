@@ -15,7 +15,7 @@ def euclidiana(x,y):
 #distancia coseno
 def coseno(x,y):
     dist=1.0 - np.dot(x, y) / (np.linalg.norm(x) * np.linalg.norm(y))
-    # si los vectores no están normalizados se podría utilizar la siguente linea
+    # si los vectores ya están normalizados se podría utilizar la siguente linea
     #dist=1.0 - np.dot(x, y)
     return dist
 
@@ -108,8 +108,8 @@ class Clustering:
     def FFTraversal(self):
         print("su implementación de Farthest First Traversal") 
 
-    # Metodo para entrenar el modelo, solo recibe un numpy.array con los dato de n x N.
-    # Donde n es el número de elmentos y N la dimensión            
+    # Metodo para entrenar el modelo, solo recibe un numpy.array con los datos de n x p.
+    # Donde n es el número de elmentos y p la dimensión            
     def fit(self,data):
         self.data=data
         self.algorithm()

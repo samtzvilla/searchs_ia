@@ -1,6 +1,6 @@
 # Copyright 2018 Jose Otiz-Bejar
-
-# Licensed under the Apache License, Version 2.0 (the "License");
+ 
+#Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 
@@ -64,7 +64,7 @@ class BlindSearch:
         successors=[x for x in self.successor(cs) if x.state not in self.visited]
         for s in successors:
                 self.visited.add(s.state)
-                s.cost=self.heuristic(s,self.goal_state)
+                s.cost=s.depth+self.heuristic(s,self.goal_state)
                 heapq.heappush(self.frontier, s)
             
     strategies={"bfs":bfs,"dfs":dfs,"a*":astar}

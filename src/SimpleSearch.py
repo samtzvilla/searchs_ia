@@ -86,7 +86,6 @@ class BlindSearch:
         current=self.start
         self.frontier=[current]
         self.visited=set([current.state])
-        print(current.state, len(self.frontier))
         while (not self.goal(current,self.goal_state)) and len(self.frontier)>0 and i<max_iter:
             i+=1
             current=self.pop()

@@ -77,7 +77,7 @@ class BlindSearch:
         # function to update de frontier (this deifine the search type, defautl bfs)
         self.add=self.strategies[strategy]  # Search strategy (BFS, DFS or A*)
         self.visited=set() # used to mark already visited states (to avoid cycles)
-        self.frontier=[] # list o pending nodes
+        self.frontier=[] # list of pending nodes
         self.goal_state=goal_state # only necesary if we know the final state and we are looking for a step's sequence
         self.heuristic=heuristic
 
@@ -88,14 +88,15 @@ class BlindSearch:
         self.visited=set([current.state])
         while (not self.goal(current,self.goal_state)) and len(self.frontier)>0 and i<max_iter:
             i+=1
+            current=self.pop()
             self.add(self,current)
             if i%1000==0 and debug:
                 print("iteration: %s, node cost: %s" %(i,current.cost))
                 print("Is current state the goal?: %s" %self.goal(current,self.goal_state))
                 print(current.state)
-            current=self.pop()
+            #print((not self.goal(current,self.goal_state)), len(self.frontier)>0, i<max_iter)
         print("finished in %s iterations" %i)
-        print("Se acabaron los estados:", len(self.frontier))
+        #print("Se acabaron los estados:", len(self.frontier))
         if self.goal(current,self.goal_state): 
             return current
         else:
